@@ -2,8 +2,8 @@
 using RabbitMQ.Client;
 using RabbitMQ.Client.Events;
 var factory = new ConnectionFactory { HostName = "localhost" };
-var connection = factory.CreateConnection(); // No 'using' here for testing
-var channel = connection.CreateModel();     // No 'using' here for testing
+var connection = factory.CreateConnection(); 
+var channel = connection.CreateModel();    
 
 channel.QueueDeclare("notification", false, false, false, null);
 
@@ -17,3 +17,4 @@ consumer.Received += (model, ea) => {
 channel.BasicConsume("notification", true, consumer);
 
 Console.WriteLine("SUCCESFULLY CONNECTED! Waiting for messages... jouhari");
+Console.ReadLine();

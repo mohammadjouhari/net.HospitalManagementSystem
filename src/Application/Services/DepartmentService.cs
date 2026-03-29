@@ -24,9 +24,7 @@ public class DepartmentService : IDepartmentService
     public void CreateDepartment(CreateDepartmentRequest request)
     {
         CheckIfDepartmentExistsByName(request.Name);
-
         var department = _mapper.Map<Department>(request);
-
         _unitOfWork.DepartmentRepository.Create(department);
         _unitOfWork.SaveChanges();
     }
